@@ -269,7 +269,78 @@
 
 <script>
 const words = [
-  { word:"MAETICK", category:"PUBLIC FIGURE/INFLUENZA", hint:"Single mom" },
+  { word:"KRUPAM", category:"PUBLIC FIGURE/INFLUENZA", hint:"The most beautiful teacher" },
+];
+
+const COLORS = [
+  {bg:'rgba(233,69,96,0.15)', border:'#e94560', color:'#e94560'},
+  {bg:'rgba(76,201,240,0.15)', border:'#4cc9f0', color:'#4cc9f0'},
+  {bg:'rgba(6,214,160,0.15)', border:'#06d6a0', color:'#06d6a0'},
+  {bg:'rgba(245,166,35,0.15)', border:'#f5a623', color:'#f5a623'},
+  {bg:'rgba(123,47,255,0.15)', border:'#7b2fff', color:'#c084fc'},
+  {bg:'rgba(255,200,100,0.15)', border:'#ffd166', color:'#ffd166'},
+];
+
+const MAX_LIVES = 6;
+let score=0, round=0, streak=0;
+let currentWord='', guessed=new Set(), lives=MAX_LIVES;
+let hintUsed=false, gameActive=false;
+let usedIndices=[];
+
+function shuffle(arr) {
+  const a=[...arr];
+  for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}
+  return a;
+}
+
+function nextRound() {
+  if(usedIndices.length >= words.length) usedIndices=[];
+  let idx;
+  do { idx=Math.floor(Math.random()*words.length); } while(usedIndices.includes(idx));
+  usedIndices.push(idx);
+
+  const entry = words[idx];
+  currentWord = entry.word;
+  guessed = new Set();
+  lives = MAX_LIVES;
+  hintUsed = false;
+  gameActive = true;
+  round++;
+  
+<h1>🔤 WORD GUESSER</h1>
+<p class="subtitle">SCATTER LETTERS · GUESS THE WORD</p>
+
+<div class="stats">
+  <div class="stat"><div class="stat-num pink" id="scoreEl">0</div><div class="stat-label">Score</div></div>
+  <div class="stat"><div class="stat-num green" id="roundEl">1</div><div class="stat-label">Round</div></div>
+  <div class="stat"><div class="stat-num yellow" id="streakEl">0</div><div class="stat-label">Streak 🔥</div></div>
+</div>
+
+<div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
+
+<div class="category-badge" id="categoryEl">—</div>
+
+<div class="word-display" id="wordDisplay"></div>
+
+<div class="lives-row" id="livesRow"></div>
+
+<div class="hint-box" id="hintBox" style="display:none"></div>
+
+<div class="message" id="message"></div>
+
+<div class="letters-area" id="lettersArea"></div>
+
+<div class="game-over-word" id="answerReveal" style="display:none"></div>
+
+<div class="btn-row">
+  <button class="btn btn-hint" id="hintBtn" onclick="showHint()">💡 Hint</button>
+  <button class="btn btn-primary" id="nextBtn" onclick="nextRound()" style="display:none">Next Word ➜</button>
+  <button class="btn btn-primary" id="startBtn" onclick="nextRound()" style="display:none">Play Again 🔄</button>
+</div>
+
+<script>
+const words = [
+  { word:"Plao", category:"SHR Legendary", hint:"0% sweet but need 100%" },
 ];
 
 const COLORS = [
@@ -307,6 +378,77 @@ function nextRound() {
   gameActive = true;
   round++;
 
+<h1>🔤 WORD GUESSER</h1>
+<p class="subtitle">SCATTER LETTERS · GUESS THE WORD</p>
+
+<div class="stats">
+  <div class="stat"><div class="stat-num pink" id="scoreEl">0</div><div class="stat-label">Score</div></div>
+  <div class="stat"><div class="stat-num green" id="roundEl">1</div><div class="stat-label">Round</div></div>
+  <div class="stat"><div class="stat-num yellow" id="streakEl">0</div><div class="stat-label">Streak 🔥</div></div>
+</div>
+
+<div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
+
+<div class="category-badge" id="categoryEl">—</div>
+
+<div class="word-display" id="wordDisplay"></div>
+
+<div class="lives-row" id="livesRow"></div>
+
+<div class="hint-box" id="hintBox" style="display:none"></div>
+
+<div class="message" id="message"></div>
+
+<div class="letters-area" id="lettersArea"></div>
+
+<div class="game-over-word" id="answerReveal" style="display:none"></div>
+
+<div class="btn-row">
+  <button class="btn btn-hint" id="hintBtn" onclick="showHint()">💡 Hint</button>
+  <button class="btn btn-primary" id="nextBtn" onclick="nextRound()" style="display:none">Next Word ➜</button>
+  <button class="btn btn-primary" id="startBtn" onclick="nextRound()" style="display:none">Play Again 🔄</button>
+</div>
+
+<script>
+const words = [
+  { word:"Achita", category:"SHR Legendary", hint:"I build houses" },
+];
+
+const COLORS = [
+  {bg:'rgba(233,69,96,0.15)', border:'#e94560', color:'#e94560'},
+  {bg:'rgba(76,201,240,0.15)', border:'#4cc9f0', color:'#4cc9f0'},
+  {bg:'rgba(6,214,160,0.15)', border:'#06d6a0', color:'#06d6a0'},
+  {bg:'rgba(245,166,35,0.15)', border:'#f5a623', color:'#f5a623'},
+  {bg:'rgba(123,47,255,0.15)', border:'#7b2fff', color:'#c084fc'},
+  {bg:'rgba(255,200,100,0.15)', border:'#ffd166', color:'#ffd166'},
+];
+
+const MAX_LIVES = 6;
+let score=0, round=0, streak=0;
+let currentWord='', guessed=new Set(), lives=MAX_LIVES;
+let hintUsed=false, gameActive=false;
+let usedIndices=[];
+
+function shuffle(arr) {
+  const a=[...arr];
+  for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}
+  return a;
+}
+
+function nextRound() {
+  if(usedIndices.length >= words.length) usedIndices=[];
+  let idx;
+  do { idx=Math.floor(Math.random()*words.length); } while(usedIndices.includes(idx));
+  usedIndices.push(idx);
+
+  const entry = words[idx];
+  currentWord = entry.word;
+  guessed = new Set();
+  lives = MAX_LIVES;
+  hintUsed = false;
+  gameActive = true;
+  round++;
+  
   document.getElementById('roundEl').textContent = round;
   document.getElementById('categoryEl').textContent = entry.category;
   document.getElementById('hintBox').style.display='none';
